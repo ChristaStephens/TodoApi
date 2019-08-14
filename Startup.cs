@@ -27,8 +27,11 @@ namespace TodoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TodoContext> (opt => opt.UseInMemoryDatabase("TodList"));
+            services.AddDbContext<TodoContext>(opt =>
+                opt.UseInMemoryDatabase("TodoList"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+           //I don't know how this last line worked but it bypassed the security issue
+            services.AddMvc().AddApplicationPart(typeof(Startup).Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,7 +48,9 @@ namespace TodoApi
             }
 
             app.UseHttpsRedirection();
+
             app.UseMvc();
+
         }
     }
 }
