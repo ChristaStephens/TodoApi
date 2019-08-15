@@ -40,6 +40,8 @@ namespace TodoApi.Controllers
 
         // GET: api/Todo/5 - this is an endpoint
         [HttpGet("{id}")]
+        //actionresult helps to return the body of the response message
+        //it also handles the response code - such as notfound()
         public async Task<ActionResult<TodoItem>> GetTodoItem(long id)
         {
             var todoItem = await _context.TodoItems.FindAsync(id);
