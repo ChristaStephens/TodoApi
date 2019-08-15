@@ -7,7 +7,11 @@ using TodoApi.Models;
 
 namespace TodoApi.Controllers
 {
-    [Route("api/[controller]")]
+    //this is the route or url path for a get method.
+    //show's how it's constructed
+    //the route name (after api, in [todo]), changes to
+    //the name of the actual controller name, but lower case
+    [Route("api/[todo]")]
     [ApiController]
     public class TodoController : ControllerBase
     {
@@ -27,6 +31,7 @@ namespace TodoApi.Controllers
         }
 
         // GET: api/Todo - this is an endpoint
+        //this signals a method that responds to a http get request.
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TodoItem>>> GetTodoItems()
         {
