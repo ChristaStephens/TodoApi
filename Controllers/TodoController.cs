@@ -11,7 +11,7 @@ namespace TodoApi.Controllers
     //show's how it's constructed
     //the route name (after api, in [todo]), changes to
     //the name of the actual controller name, but lower case
-    [Route("api/[todo]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class TodoController : ControllerBase
     {
