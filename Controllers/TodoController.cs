@@ -65,7 +65,7 @@ namespace TodoApi.Controllers
             await _context.SaveChangesAsync();
 
             //CreatedAtAction return a 201 status code (ok) if successful
-            //also adds a location header to the response
+            //also adds a location header to the response.
             //references the GetTodoItem action to create the location header
             //nameof is used to prevent hard-coding the action name in the CreatedAtAction
             return CreatedAtAction(nameof(GetTodoItem), new { id = item.Id}, item);
