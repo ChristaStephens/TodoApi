@@ -71,6 +71,26 @@ namespace TodoApi.Controllers
             return CreatedAtAction(nameof(GetTodoItem), new { id = item.Id}, item);
         }
 
+        //Put: api/Todo/5 endpoint to change an item.
+        //updates the entire item, like a form.
+        //if you want to update just parts of it use a patch method
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutTodoItem(long id, TodoItem item)
+        {
+            if (id != item.Id)
+            {
+                return BadRequest();
+            }
+
+            //saying tat we are tracking the items state in the
+            //database then saving it
+            _context.Entry(item).State = EntityState.Modified;
+            //savechangesasync() saves changes to database
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
     }
 
 }
