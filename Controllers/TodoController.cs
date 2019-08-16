@@ -9,9 +9,10 @@ namespace TodoApi.Controllers
 {
     //this is the route or url path for a get method.
     //show's how it's constructed
-    //the route name (after api, in [todo]), changes to
-    //the name of the actual controller name, but lower case
-    [Route("api/[controller]")]
+    //You can change the route name: "[Route("api/[controller]")] from
+    //controller to the name of the controller file, but lower case.
+
+    [Route("api/todo")]
     [ApiController]
     public class TodoController : ControllerBase
     {
