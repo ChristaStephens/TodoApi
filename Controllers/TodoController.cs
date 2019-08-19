@@ -88,9 +88,26 @@ namespace TodoApi.Controllers
             //savechangesasync() saves changes to database
             await _context.SaveChangesAsync();
 
+            //returns a 204 No content response
             return NoContent();
         }
 
-    }
 
+        //Delete: api/Todo/5 an endpoint that deletes an item
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTodoItem(long id)
+        {
+            //FindAsync looks for the todo item
+            var todoItem = await _context.TodoItems.FindAsync(id);
+            if (todoItem == null)
+            {
+                return NotFound();
+            }
+            _context.TodoItems.Remove(todoItem);
+            await _context.SaveChangesAsync();
+
+            //returns a 204 No content response
+            return NoContent();
+        }
+    }
 }
